@@ -15,9 +15,11 @@ after_success:
   - docker build -t hlucco/multi-nginx ./nginx
   - docker build -t hlucco/multi-server ./server
   - docker build -t hlucco/multi-worker ./worker
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push hucco/multi-client
-  - docker push hucco/multi-nginx
-  - docker push hucco/multi-server
-  - docker push hucco/multi-worker
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take those images and push them to docker hub
+  - docker push hlucco/multi-client
+  - docker push hlucco/multi-nginx
+  - docker push hlucco/multi-server
+  - docker push hlucco/multi-worker
 
