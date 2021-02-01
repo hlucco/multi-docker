@@ -9,7 +9,6 @@ before_install:
 
 script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker run -e CI=true hlucco/react-test npm test
 
 after_success:
   - docker build -t hlucco/multi-client ./client
