@@ -11,7 +11,7 @@ script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
 after_success:
-  - docker -e CI=true build -t hlucco/multi-client ./client
+  - docker build -t hlucco/multi-client ./client
   - docker build -t hlucco/multi-nginx ./nginx
   - docker build -t hlucco/multi-server ./server
   - docker build -t hlucco/multi-worker ./worker
